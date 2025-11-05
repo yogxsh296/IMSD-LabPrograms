@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Factorial and Fibonacci Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background-color: blanchedalmond;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+            color: deeppink;
+        }
+        h2{
+            color: darkgoldenrod;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Factorial and Fibonacci Calculator</h2>
+
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <button onclick="calculateFactorial()">Factorial</button>
+    <button onclick="generateFibonacci()">Fibonacci</button>
+
+    <div id="output"></div>
+
+    <script>
+        // Function to calculate factorial of a number
+        function calculateFactorial() {
+            const num = parseInt(document.getElementById("numberInput").value);
+            if (isNaN(num) || num < 0) {
+                document.getElementById("output").innerText = "Please enter a valid non-negative number.";
+                return;
+            }
+
+            let result = 1;
+            for (let i = 1; i <= num; i++) {
+                result *= i;
+            }
+
+            document.getElementById("output").innerText = Factorial of ${num} is: ${result};
+        }
+
+        // Function to generate Fibonacci series up to the given number
+        function generateFibonacci() {
+            const num = parseInt(document.getElementById("numberInput").value);
+            if (isNaN(num) || num < 0) {
+                document.getElementById("output").innerText = "Please enter a valid non-negative number.";
+                return;
+            }
+
+            let fibSeries = [];
+            let a = 0, b = 1;
+            while (a <= num) {
+                fibSeries.push(a);
+                [a, b] = [b, a + b];
+            }
+
+            document.getElementById("output").innerText = Fibonacci series up to ${num}: ${fibSeries.join(', ')};
+        }
+    </script>
+
+</body>
+</html>
